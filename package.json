@@ -7,7 +7,7 @@
   "main": "public/electron.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/terra-rebels/station-desktop.git"
+    "url": "https://github.com/echel0n/station-desktop.git"
   },
   "dependencies": {
     "bech32": "^2.0.0",
