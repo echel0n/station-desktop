@@ -13,7 +13,8 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-latest, windows-latest]
+        os: [macos-latest, ubuntu-latest]
+      fail-fast: false
 
     steps:
       - name: Check out Git repository
@@ -22,17 +23,24 @@ jobs:
       - name: Install Node.js, NPM and Yarn
         uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 15
 
-      - name: Build/release Electron app
-        uses: Yan-Jobs/action-electron-builder@v1.7.0
+      - name: Build Ubuntu
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: |
+          sudo apt update && sudo apt install libudev-dev libusb-1.0-0-dev
+          npm i
+          npm run build-linux
+      
+      - name: Build Macos
+        if: ${{ matrix.os == 'macos-latest' }}
+        run: |
+          brew install libusb-compat
+          npm i
+          npm run build-macwin
+      
+      - name: Build/release
+        uses: samuelmeuli/action-electron-builder@v1
         with:
-          # GitHub token, automatically provided to the action
-          # (No need to define this secret in the repo settings)
           github_token: ${{ secrets.github_token }}
-
-          # If the commit is tagged with a version (e.g. "v1.0.0"),
-          # release the app after building
           release: true
-        env:
-          NODE_OPTIONS: '--max_old_space_size=4096'
