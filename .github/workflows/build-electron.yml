@@ -26,13 +26,13 @@ jobs:
         run: |
           sudo apt update && sudo apt install libudev-dev libusb-1.0-0-dev
           npm i
-          npm run build-linux
+          npm run deploy-linux
       - name: Build Macos
         if: ${{ matrix.os == 'macos-latest' }}
         run: |
           brew install libusb-compat
           npm i
-          npm run build-macwin
+          npm run deploy-macwin
         env:
           GH_TOKEN: ${{ secrets.github_token }}
       # - name: Build/release
