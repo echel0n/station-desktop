@@ -26,6 +26,8 @@
     "start": "electron .",
     "build-linux": "electron-builder -l --config build-linux.json",
     "build-macwin": "electron-builder -mw --config build-macwin.json",
+    "deploy-linux": "electron-builder -l --config build-linux.json --publish always",
+    "deploy-macwin": "electron-builder -mw --config build-macwin.json --publish always",
     "postinstall": "electron-builder install-app-deps",
     "prettier": "prettier --write public/**/*.js"
   },
