@@ -25,9 +25,11 @@
   "scripts": {
     "start": "electron .",
     "build-linux": "electron-builder -l --config build-linux.json",
-    "build-macwin": "electron-builder -mw --config build-macwin.json",
-    "deploy-linux": "electron-builder -l --config build-linux.json --publish always",
-    "deploy-macwin": "electron-builder -mw --config build-macwin.json --publish always",
+    "build-mac": "electron-builder -m --config build-electron.json",
+    "build-win": "electron-builder -w --config build-electron.json",    
+    "deploy-linux": "electron-builder -l --config build-electron.json --publish always",
+    "deploy-mac": "electron-builder -m --config build-electron.json --publish always",
+    "deploy-win": "electron-builder -w --config build-electron.json --publish always",
     "postinstall": "electron-builder install-app-deps",
     "prettier": "prettier --write public/**/*.js"
   },
