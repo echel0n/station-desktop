@@ -27,6 +27,8 @@ jobs:
           sudo apt update && sudo apt install libudev-dev libusb-1.0-0-dev
           npm i
           npm run deploy-linux
+        env:
+          GH_TOKEN: ${{ secrets.github_token }}
       - name: Build Macos
         if: ${{ matrix.os == 'macos-latest' }}
         run: |
@@ -40,3 +42,5 @@ jobs:
         run: |
           npm i
           npm run deploy-win
+        env:
+          GH_TOKEN: ${{ secrets.github_token }}
