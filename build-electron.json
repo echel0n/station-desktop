@@ -19,7 +19,8 @@
     "window": {
       "width": 540,
       "height": 370
-    }
+    },
+    "writeUpdateInfo": false
   },
   "linux": {
     "target": [ "deb", "rpm" ],
@@ -27,6 +28,9 @@
   },
   "win": {
     "target": "nsis"
+  },
+  "nsis": {
+	  "differentialPackage": false,
   },
   "files": ["public/**/*", "node_modules/**/*"]
 }
